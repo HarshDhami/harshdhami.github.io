@@ -1,0 +1,1677 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Scripting Lab_1</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="eb4db249-4c08-468a-a805-e33ec8db993b" class="page sans"><header><h1 class="page-title">Scripting Lab_1</h1><p class="page-description"></p></header><div class="page-body"><ol type="1" id="2319080d-e1a5-40cc-9231-435a1cf2298f" class="numbered-list" start="1"><li>The output of the set command is:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3e58989b-101e-467d-8185-5462c590e2ef" class="code"><code class="language-Bash">BASH=/bin/bash
+BASHOPTS=checkwinsize:cmdhist:complete_fullquote:expand_aliases:extquote:force_fignore:histappend:hostcomplete:interactive_comments:login_shell:progcomp:promptvars:sourcepath
+BASHRCSOURCED=Y
+BASH_ALIASES=()
+BASH_ARGC=()
+BASH_ARGV=()
+BASH_CMDS=()
+BASH_LINENO=()
+BASH_SOURCE=()
+BASH_VERSINFO=([0]=&quot;4&quot; [1]=&quot;4&quot; [2]=&quot;20&quot; [3]=&quot;1&quot; [4]=&quot;release&quot; [5]=&quot;x86_64-redhat-linux-gnu&quot;)
+BASH_VERSION=&#x27;4.4.20(1)-release&#x27;
+COLUMNS=120
+DIRSTACK=()
+DISPLAY=:0
+EUID=0
+GROUPS=()
+HISTCONTROL=ignoredups
+HISTFILE=/root/.bash_history
+HISTFILESIZE=1000
+HISTSIZE=1000
+HOME=/root
+HOSTNAME=HarshDhami
+HOSTTYPE=x86_64
+IFS=$&#x27; \t\n&#x27;
+LANG=en_US.UTF-8
+LESSOPEN=&#x27;||/usr/bin/lesspipe.sh %s&#x27;
+LINES=30
+LOGNAME=root
+LS_COLORS=&#x27;rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:&#x27;
+MACHTYPE=x86_64-redhat-linux-gnu
+MAIL=/var/spool/mail/root
+MAILCHECK=60
+NAME=HarshDhami
+OPTERR=1
+OPTIND=1
+OSTYPE=linux-gnu
+PATH=&#x27;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/VMware/VMware Workstation/bin/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/dhami/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/dhami/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/dhami/AppData/Roaming/npm:/root/bin&#x27;
+PIPESTATUS=([0]=&quot;0&quot;)
+PPID=13
+PROMPT_COMMAND=&#x27;printf &quot;\033]0;%s@%s:%s\007&quot; &quot;${USER}&quot; &quot;${HOSTNAME%%.*}&quot; &quot;${PWD/#$HOME/\~}&quot;&#x27;
+PS1=&#x27;[\u@\h \W]\$ &#x27;
+PS2=&#x27;&gt; &#x27;
+PS4=&#x27;+ &#x27;
+PULSE_SERVER=unix:/mnt/wslg/PulseServer
+PWD=/root
+SHELL=/bin/bash
+SHELLOPTS=braceexpand:emacs:hashall:histexpand:history:interactive-comments:monitor
+SHLVL=1
+TERM=xterm-256color
+UID=0
+USER=root
+WAYLAND_DISPLAY=wayland-0
+WSL2_GUI_APPS_ENABLED=1
+WSLENV=
+WSL_DISTRO_NAME=CentOS8
+WSL_INTEROP=/run/WSL/13_interop
+XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir
+_=PATH
+colors=/root/.dircolors
+gawklibpath_append ()
+{
+    [ -z &quot;$AWKLIBPATH&quot; ] &amp;&amp; AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`;
+    export AWKLIBPATH=&quot;$AWKLIBPATH:$*&quot;
+}
+gawklibpath_default ()
+{
+    unset AWKLIBPATH;
+    export AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`
+}
+gawklibpath_prepend ()
+{
+    [ -z &quot;$AWKLIBPATH&quot; ] &amp;&amp; AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`;
+    export AWKLIBPATH=&quot;$*:$AWKLIBPATH&quot;
+}
+gawkpath_append ()
+{
+    [ -z &quot;$AWKPATH&quot; ] &amp;&amp; AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`;
+    export AWKPATH=&quot;$AWKPATH:$*&quot;
+}
+gawkpath_default ()
+{
+    unset AWKPATH;
+    export AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`
+}
+gawkpath_prepend ()
+{
+    [ -z &quot;$AWKPATH&quot; ] &amp;&amp; AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`;
+    export AWKPATH=&quot;$*:$AWKPATH&quot;
+}</code></pre><p id="141adf21-9193-4d52-ac4b-95d5c144a9a1" class="">
+</p><ol type="1" id="2eaa49ec-6501-4e02-8f37-13444547ff8f" class="numbered-list" start="2"><li>The output of the env command is:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4275400a-7aac-4241-b5df-7b63e6410faa" class="code"><code class="language-Bash">LS_COLORS=rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:
+HOSTTYPE=x86_64
+PULSE_SERVER=unix:/mnt/wslg/PulseServer
+LANG=en_US.UTF-8
+HISTCONTROL=ignoredups
+DISPLAY=:0
+HOSTNAME=HarshDhami
+WSL_INTEROP=/run/WSL/13_interop
+WSL_DISTRO_NAME=CentOS8
+USER=root
+WAYLAND_DISPLAY=wayland-0
+PWD=/root
+HOME=/root
+NAME=HarshDhami
+MAIL=/var/spool/mail/root
+SHELL=/bin/bash
+TERM=xterm-256color
+SHLVL=1
+WSL2_GUI_APPS_ENABLED=1
+LOGNAME=root
+XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/VMware/VMware Workstation/bin/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/dhami/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/dhami/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/dhami/AppData/Roaming/npm:/root/bin
+HISTSIZE=1000
+WSLENV=
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+_=/usr/bin/env</code></pre><p id="31ba6f94-53f1-4cea-9496-afc5d2e18380" class="">
+</p><ol type="1" id="6e1e6c94-bb31-4352-bdc8-a7ee076ead82" class="numbered-list" start="3"><li>The output of the export -p command is:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b767eecd-05c5-4b5e-9a34-0536f9c7af94" class="code"><code class="language-Bash">declare -x DISPLAY=&quot;:0&quot;
+declare -x HISTCONTROL=&quot;ignoredups&quot;
+declare -x HISTSIZE=&quot;1000&quot;
+declare -x HOME=&quot;/root&quot;
+declare -x HOSTNAME=&quot;HarshDhami&quot;
+declare -x HOSTTYPE=&quot;x86_64&quot;
+declare -x LANG=&quot;en_US.UTF-8&quot;
+declare -x LESSOPEN=&quot;||/usr/bin/lesspipe.sh %s&quot;
+declare -x LOGNAME=&quot;root&quot;
+declare -x LS_COLORS=&quot;rs=0:di=38;5;33:ln=38;5;51:mh=00:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;05;37;41:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;40:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.zst=38;5;9:*.tzst=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.wim=38;5;9:*.swm=38;5;9:*.dwm=38;5;9:*.esd=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.mjpg=38;5;13:*.mjpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.m4a=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.oga=38;5;45:*.opus=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:&quot;
+declare -x MAIL=&quot;/var/spool/mail/root&quot;
+declare -x NAME=&quot;HarshDhami&quot;
+declare -x OLDPWD
+declare -x PATH=&quot;/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/VMware/VMware Workstation/bin/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/dhami/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/dhami/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/dhami/AppData/Roaming/npm:/root/bin&quot;
+declare -x PULSE_SERVER=&quot;unix:/mnt/wslg/PulseServer&quot;
+declare -x PWD=&quot;/root&quot;
+declare -x SHELL=&quot;/bin/bash&quot;
+declare -x SHLVL=&quot;1&quot;
+declare -x TERM=&quot;xterm-256color&quot;
+declare -x USER=&quot;root&quot;
+declare -x WAYLAND_DISPLAY=&quot;wayland-0&quot;
+declare -x WSL2_GUI_APPS_ENABLED=&quot;1&quot;
+declare -x WSLENV=&quot;&quot;
+declare -x WSL_DISTRO_NAME=&quot;CentOS8&quot;
+declare -x WSL_INTEROP=&quot;/run/WSL/13_interop&quot;
+declare -x XDG_RUNTIME_DIR=&quot;/mnt/wslg/runtime-dir&quot;</code></pre><p id="1c7b1395-53f3-4319-bf45-53dc0773b2a8" class="">
+</p><ol type="1" id="794f699e-2142-488f-9e5b-f785ef935d44" class="numbered-list" start="4"><li>The output of the local history number is:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7bfca383-d1cc-44e1-8c5c-67620b26ece9" class="code"><code class="language-Bash">root@HarshDhami ~# PS1=&#x27;[\!]$ &#x27;
+[67]$</code></pre><p id="21304b67-d286-4b11-9159-5a68c8ed3e23" class="">
+</p><ol type="1" id="d0a47a6d-8645-4266-9fe0-c5cfc24f726f" class="numbered-list" start="5"><li>This command will show the name, hostname and the working directory:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="881d6abe-a482-45d2-8150-adb10bde6885" class="code"><code class="language-Bash">[67]$ PS1=&#x27;\u@\h \w\$ &#x27;
+root@HarshDhami ~#</code></pre><p id="2a90c336-92d1-4db1-be62-e5d72bf4974b" class="">
+</p><ol type="1" id="3384ccb9-2c4a-4cf8-8f0c-d1376bff527f" class="numbered-list" start="6"><li>Listing the /bin directory</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="70d7aada-9184-4194-9e55-b8a0a4b4c638" class="code"><code class="language-Bash">[root@HarshDhami ~]# ls /bin
+&#x27;[&#x27;                                   gpg-wks-server          nl-qdisc-delete            sg_ses
+ alias                                gpg-zip                 nl-qdisc-list              sg_ses_microcode
+ appstream-compose                    gpic                    nl-route-add               sg_start
+ appstream-util                       gpio-event-mon          nl-route-delete            sg_stpg
+ apropos                              gpio-hammer             nl-route-get               sg_stream_ctl
+ arch                                 grep                    nl-route-list              sg_sync
+ audit2allow                          groff                   nl-rule-list               sg_test_rwbuf
+ audit2why                            grops                   nl-tctree-list             sg_timestamp
+ aulast                               grotty                  nl-util-addr               sg_turs
+ aulastlog                            groups                  nmcli                      sg_unmap
+ ausyscall                            growpart                nm-online                  sg_verify
+ authselect                           grub2-editenv           nmtui                      sg_vpd
+ auvirt                               grub2-file              nmtui-connect              sg_write_buffer
+ awk                                  grub2-fstest            nmtui-edit                 sg_write_long
+ b2sum                                grub2-glue-efi          nmtui-hostname             sg_write_same
+ base32                               grub2-kbdcomp           nohup                      sg_write_verify
+ base64                               grub2-menulst2cfg       nproc                      sg_write_x
+ basename                             grub2-mkfont            nroff                      sg_wr_mode
+ bash                                 grub2-mkimage           nsenter                    sg_xcopy
+ bashbug                              grub2-mklayout          numfmt                     sg_zone
+ bashbug-64                           grub2-mknetdir          od                         sh
+ bg                                   grub2-mkpasswd-pbkdf2   oddjob_request             sha1hmac
+ bond2team                            grub2-mkrelpath         open                       sha1sum
+ bootctl                              grub2-mkrescue          openssl                    sha224hmac
+ brotli                               grub2-mkstandalone      openvt                     sha224sum
+ bunzip2                              grub2-script-check      os-prober                  sha256hmac
+ busctl                               grub2-syslinux2cfg      p11-kit                    sha256sum
+ bzcat                                gsettings               package-cleanup            sha384hmac
+ bzcmp                                gsoelim                 page_owner_sort            sha384sum
+ bzdiff                               gtar                    passwd                     sha512hmac
+ bzegrep                              gtbl                    paste                      sha512sum
+ bzfgrep                              gtroff                  pathchk                    showconsolefont
+ bzgrep                               gunzip                  pchrt                      showkey
+ bzip2                                gzexe                   peekfd                     shred
+ bzip2recover                         gzip                    pflags                     shuf
+ bzless                               hash                    pgrep                      skill
+ bzmore                               head                    pic                        slabinfo
+ cairo-sphinx                         hexdump                 pidof                      slabtop
+ cal                                  hostid                  pigz                       sleep
+ ca-legacy                            hostname                pinentry                   snice
+ captoinfo                            hostnamectl             pinentry-curses            soelim
+ cat                                  i386                    ping                       sort
+ catchsegv                            ibdev2netdev            pinky                      sotruss
+ catman                               iconv                   pkaction                   split
+ cd                                   id                      pkcheck                    sprof
+ centrino-decode                      idiag-socket-details    pkcon                      sscg
+ chacl                                iio_event_monitor       pkexec                     ssh
+ chage                                iio_generic_buffer      pkill                      ssh-add
+ chardetect                           info                    pkla-admin-identities      ssh-agent
+ chattr                               infocmp                 pkla-check-authorization   ssh-copy-id
+ chcat                                infotocap               pkmon                      ssh-keygen
+ chcon                                install                 pkttyagent                 ssh-keyscan
+ checkmodule                          intel-speed-select      pldd                       sss_ssh_authorizedkeys
+ checkpolicy                          ionice                  pmap                       sss_ssh_knownhostsproxy
+ chgrp                                ipcalc                  post-grohtml               stat
+ chmem                                ipcmk                   powernow-k8-decode         stdbuf
+ chmod                                ipcrm                   pr                         stty
+ chown                                ipcs                    preconv                    su
+ chronyc                              isosize                 pre-grohtml                sudo
+ chrt                                 jobs                    printenv                   sudoedit
+ chvt                                 join                    printf                     sudoreplay
+ cksum                                journalctl              prlimit                    sum
+ clear                                jsondiff                prtstat                    sync
+ cloud-id                             jsondiff-3              ps                         systemctl
+ cloud-init                           jsondiff-3.6            psfaddtable                systemd-analyze
+ cloud-init-per                       jsonpatch               psfgettable                systemd-ask-password
+ cmp                                  jsonpatch-3             psfstriptable              systemd-cat
+ cockpit-bridge                       jsonpatch-3.6           psfxtable                  systemd-cgls
+ col                                  jsonpointer             pslog                      systemd-cgtop
+ colcrt                               jsonpointer-3           pstree                     systemd-delta
+ colrm                                jsonpointer-3.6         pstree.x11                 systemd-detect-virt
+ column                               jsonschema-3            ptaskset                   systemd-escape
+ comm                                 kbdinfo                 ptx                        systemd-firstboot
+ command                              kbd_mode                pwd                        systemd-hwdb
+ coredumpctl                          kbdrate                 pwdx                       systemd-inhibit
+ cp                                   kbxutil                 pwmake                     systemd-machine-id-setup
+ cpio                                 kdumpctl                pwscore                    systemd-mount
+ cpupower                             kernel-install          pydoc3.6                   systemd-notify
+ cronnext                             keyctl                  pyjwt                      systemd-path
+ crontab                              kill                    pyvenv-3.6                 systemd-resolve
+ csplit                               killall                 qemu-ga                    systemd-run
+ csslint-0.6                          kmod                    quota                      systemd-socket-activate
+ curl                                 kvm_stat                quotasync                  systemd-stdio-bridge
+ cut                                  last                    raw                        systemd-sysusers
+ cvtsudoers                           lastb                   read                       systemd-tmpfiles
+ date                                 lastlog                 readlink                   systemd-tty-ask-password-agent
+ db_archive                           lchfn                   realpath                   systemd-umount
+ db_checkpoint                        lchsh                   recode-sr-latin            tabs
+ db_deadlock                          ldd                     rename                     tac
+ db_dump                              less                    renew-dummy-cert           tail
+ db_dump185                           lessecho                renice                     tar
+ db_hotbackup                         lesskey                 repoclosure                taskset
+ db_load                              lesspipe.sh             repodiff                   tbl
+ db_log_verify                        lexgrog                 repo-graph                 teamd
+ db_printlog                          link                    repomanage                 teamdctl
+ db_recover                           linux32                 repoquery                  teamnl
+ db_replicate                         linux64                 reposync                   tee
+ db_stat                              linux-boot-prober       repotrack                  test
+ db_tuner                             ln                      rescan-scsi-bus.sh         tic
+ db_upgrade                           loadkeys                reset                      timedatectl
+ dbus-binding-tool                    loadunimap              resizecons                 timeout
+ dbus-cleanup-sockets                 locale                  resolvectl                 tload
+ dbus-daemon                          localectl               rev                        tmon
+ dbus-monitor                         localedef               rm                         toe
+ dbus-run-session                     logger                  rmdir                      top
+ dbus-send                            login                   rngtest                    touch
+ dbus-test-tool                       loginctl                rpcbind                    tput
+ dbus-update-activation-environment   logname                 rpcinfo                    tr
+ dbus-uuidgen                         look                    rpm                        tracepath
+ db_verify                            ls                      rpm2archive                troff
+ dd                                   lsattr                  rpm2cpio                   true
+ deallocvt                            lsblk                   rpmdb                      truncate
+ debuginfod-find                      lscpu                   rpmkeys                    trust
+ debuginfo-install                    lsgpio                  rpmquery                   tset
+ df                                   lsiio                   rpmverify                  tsort
+ diff                                 lsinitrd                rsync                      tty
+ diff3                                lsipc                   rsyslog-recover-qi.pl      turbostat
+ dir                                  lslocks                 runcon                     type
+ dircolors                            lslogins                run-parts                  tzselect
+ dirmngr                              lsmem                   rvi                        udevadm
+ dirmngr-client                       lsns                    rview                      ul
+ dirname                              lsscsi                  sandbox                    ulimit
+ dmesg                                makedb                  scp                        umask
+ dnf                                  make-dummy-cert         script                     umount
+ dnf-3                                man                     scriptreplay               unalias
+ dnsdomainname                        mandb                   scsi_logging_level         uname
+ domainname                           manpath                 scsi_mandat                uname26
+ dracut                               mapscrn                 scsi_readcap               unexpand
+ du                                   mcookie                 scsi_ready                 unicode_start
+ dumpkeys                             md5sum                  scsi-rescan                unicode_stop
+ echo                                 memstrack               scsi_satl                  uniq
+ egrep                                mesg                    scsi_start                 unlink
+ eject                                miniterm-3.6.py         scsi_stop                  unpigz
+ env                                  miniterm-3.py           scsi_temperature           unshare
+ envsubst                             mkdir                   sdiff                      unversioned-python
+ eqn                                  mkfifo                  sealert                    unxz
+ evmctl                               mkinitrd                secon                      update-ca-trust
+ ex                                   mknod                   secret-tool                update-crypto-policies
+ expand                               mktemp                  sed                        update-mime-database
+ expr                                 mmdblookup              sedismod                   uptime
+ factor                               modulemd-validator      sedispol                   users
+ fallocate                            more                    semodule_expand            usleep
+ false                                mount                   semodule_link              utmpdump
+ fc                                   mountpoint              semodule_package           uuidgen
+ fc-cache                             msgattrib               semodule_unpackage         uuidparse
+ fc-cache-64                          msgcat                  seq                        vdir
+ fc-cat                               msgcmp                  setarch                    vi
+ fc-conflist                          msgcomm                 setfacl                    view
+ fc-list                              msgconv                 setfont                    vlock
+ fc-match                             msgen                   setkeycodes                vmstat
+ fc-pattern                           msgexec                 setleds                    w
+ fc-query                             msgfilter               setmetamode                wait
+ fc-scan                              msgfmt                  setpriv                    wall
+ fc-validate                          msggrep                 setsid                     watch
+ fg                                   msginit                 setterm                    watchgnupg
+ fgconsole                            msgmerge                setvtrgb                   wc
+ fgrep                                msgunfmt                sftp                       wdctl
+ file                                 msguniq                 sg                         whatis
+ fincore                              mv                      sg_bg_ctl                  whereis
+ find                                 namei                   sg_compare_and_write       which
+ findmnt                              ndptool                 sg_copy_results            whiptail
+ find-repos-of-install                needs-restarting        sg_dd                      who
+ fips-finish-install                  neqn                    sg_decode_sense            whoami
+ fips-mode-setup                      newgidmap               sg_emc_trespass            write
+ flock                                newgrp                  sg_format                  wslinfo
+ fmt                                  newuidmap               sg_get_config              wslpath
+ fold                                 nf-ct-add               sg_get_lba_status          x86_64
+ free                                 nf-ct-events            sg_ident                   x86_energy_perf_policy
+ g13                                  nf-ct-list              sginfo                     xargs
+ gapplication                         nf-exp-add              sg_inq                     xgettext
+ gawk                                 nf-exp-delete           sg_logs                    xmlcatalog
+ gdbm_dump                            nf-exp-list             sg_luns                    xmllint
+ gdbm_load                            nf-log                  sg_map                     xmlwf
+ gdbmtool                             nf-monitor              sg_map26                   xz
+ gdbus                                nf-queue                sgm_dd                     xzcat
+ gdk-pixbuf-query-loaders-64          ngettext                sg_modes                   xzcmp
+ gdk-pixbuf-thumbnailer               nice                    sg_opcodes                 xzdec
+ gencat                               nisdomainname           sgp_dd                     xzdiff
+ genl-ctrl-list                       nl                      sg_persist                 xzegrep
+ geqn                                 nl-addr-add             sg_prevent                 xzfgrep
+ getconf                              nl-addr-delete          sg_raw                     xzgrep
+ getent                               nl-addr-list            sg_rbuf                    xzless
+ getfacl                              nl-class-add            sg_rdac                    xzmore
+ getkeycodes                          nl-class-delete         sg_read                    yes
+ getopt                               nl-classid-lookup       sg_read_attr               ypdomainname
+ getopts                              nl-class-list           sg_read_block_limits       yum
+ gettext                              nl-cls-add              sg_read_buffer             yum-builddep
+ gettext.sh                           nl-cls-delete           sg_readcap                 yum-config-manager
+ gio                                  nl-cls-list             sg_read_long               yum-debug-dump
+ gio-querymodules-64                  nl-fib-lookup           sg_reassign                yum-debug-restore
+ glib-compile-schemas                 nl-link-enslave         sg_referrals               yumdownloader
+ gneqn                                nl-link-ifindex2name    sg_rep_zones               yum-groups-manager
+ gnroff                               nl-link-list            sg_requests                zcat
+ gpasswd                              nl-link-name2ifindex    sg_reset                   zcmp
+ gpg                                  nl-link-release         sg_reset_wp                zdiff
+ gpg2                                 nl-link-set             sg_rmsn                    zegrep
+ gpg-agent                            nl-link-stats           sg_rtpg                    zfgrep
+ gpgconf                              nl-list-caches          sg_safte                   zforce
+ gpg-connect-agent                    nl-list-sockets         sg_sanitize                zgrep
+ gpg-error                            nl-monitor              sg_sat_identify            zless
+ gpgme-json                           nl-neigh-add            sg_sat_phy_event           zmore
+ gpgparsemail                         nl-neigh-delete         sg_sat_read_gplog          znew
+ gpgsm                                nl-neigh-list           sg_sat_set_features        zsoelim
+ gpgsplit                             nl-neightbl-list        sg_scan
+ gpgv                                 nl-pktloc-lookup        sg_seek
+ gpgv2                                nl-qdisc-add            sg_senddiag</code></pre><p id="4e29b771-d5c4-4a2c-a871-8625ac5a3947" class="">
+</p><ol type="1" id="996e85f7-367b-44d9-8fbe-a3d50c2e8433" class="numbered-list" start="7"><li>This command will change the COLUMNS environment varibale </li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="88bbd1f1-b1cc-4ef5-bf20-97267fcb1cc8" class="code"><code class="language-Bash">[root@HarshDhami ~]# export COLUMNS=60</code></pre><p id="1526933d-4254-457b-af8f-c41177466bac" class="">
+</p><ol type="1" id="09f9e011-a950-4acf-9b01-aea0a1b40d0d" class="numbered-list" start="8"><li>Now if we do ls /bin again, now we can see that the output is three columns format</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0bf0328b-01a1-4e58-be7d-ce2fa5eb9db4" class="code"><code class="language-Bash">[root@HarshDhami ~]# ls /bin
+&#x27;[&#x27;                                   jsonpointer                secon
+ alias                                jsonpointer-3              secret-tool
+ appstream-compose                    jsonpointer-3.6            sed
+ appstream-util                       jsonschema-3               sedismod
+ apropos                              kbdinfo                    sedispol
+ arch                                 kbd_mode                   semodule_expand
+ audit2allow                          kbdrate                    semodule_link
+ audit2why                            kbxutil                    semodule_package
+ aulast                               kdumpctl                   semodule_unpackage
+ aulastlog                            kernel-install             seq
+ ausyscall                            keyctl                     setarch
+ authselect                           kill                       setfacl
+ auvirt                               killall                    setfont
+ awk                                  kmod                       setkeycodes
+ b2sum                                kvm_stat                   setleds
+ base32                               last                       setmetamode
+ base64                               lastb                      setpriv
+ basename                             lastlog                    setsid
+ bash                                 lchfn                      setterm
+ bashbug                              lchsh                      setvtrgb
+ bashbug-64                           ldd                        sftp
+ bg                                   less                       sg
+ bond2team                            lessecho                   sg_bg_ctl
+ bootctl                              lesskey                    sg_compare_and_write
+ brotli                               lesspipe.sh                sg_copy_results
+ bunzip2                              lexgrog                    sg_dd
+ busctl                               link                       sg_decode_sense
+ bzcat                                linux32                    sg_emc_trespass
+ bzcmp                                linux64                    sg_format
+ bzdiff                               linux-boot-prober          sg_get_config
+ bzegrep                              ln                         sg_get_lba_status
+ bzfgrep                              loadkeys                   sg_ident
+ bzgrep                               loadunimap                 sginfo
+ bzip2                                locale                     sg_inq
+ bzip2recover                         localectl                  sg_logs
+ bzless                               localedef                  sg_luns
+ bzmore                               logger                     sg_map
+ cairo-sphinx                         login                      sg_map26
+ cal                                  loginctl                   sgm_dd
+ ca-legacy                            logname                    sg_modes
+ captoinfo                            look                       sg_opcodes
+ cat                                  ls                         sgp_dd
+ catchsegv                            lsattr                     sg_persist
+ catman                               lsblk                      sg_prevent
+ cd                                   lscpu                      sg_raw
+ centrino-decode                      lsgpio                     sg_rbuf
+ chacl                                lsiio                      sg_rdac
+ chage                                lsinitrd                   sg_read
+ chardetect                           lsipc                      sg_read_attr
+ chattr                               lslocks                    sg_read_block_limits
+ chcat                                lslogins                   sg_read_buffer
+ chcon                                lsmem                      sg_readcap
+ checkmodule                          lsns                       sg_read_long
+ checkpolicy                          lsscsi                     sg_reassign
+ chgrp                                makedb                     sg_referrals
+ chmem                                make-dummy-cert            sg_rep_zones
+ chmod                                man                        sg_requests
+ chown                                mandb                      sg_reset
+ chronyc                              manpath                    sg_reset_wp
+ chrt                                 mapscrn                    sg_rmsn
+ chvt                                 mcookie                    sg_rtpg
+ cksum                                md5sum                     sg_safte
+ clear                                memstrack                  sg_sanitize
+ cloud-id                             mesg                       sg_sat_identify
+ cloud-init                           miniterm-3.6.py            sg_sat_phy_event
+ cloud-init-per                       miniterm-3.py              sg_sat_read_gplog
+ cmp                                  mkdir                      sg_sat_set_features
+ cockpit-bridge                       mkfifo                     sg_scan
+ col                                  mkinitrd                   sg_seek
+ colcrt                               mknod                      sg_senddiag
+ colrm                                mktemp                     sg_ses
+ column                               mmdblookup                 sg_ses_microcode
+ comm                                 modulemd-validator         sg_start
+ command                              more                       sg_stpg
+ coredumpctl                          mount                      sg_stream_ctl
+ cp                                   mountpoint                 sg_sync
+ cpio                                 msgattrib                  sg_test_rwbuf
+ cpupower                             msgcat                     sg_timestamp
+ cronnext                             msgcmp                     sg_turs
+ crontab                              msgcomm                    sg_unmap
+ csplit                               msgconv                    sg_verify
+ csslint-0.6                          msgen                      sg_vpd
+ curl                                 msgexec                    sg_write_buffer
+ cut                                  msgfilter                  sg_write_long
+ cvtsudoers                           msgfmt                     sg_write_same
+ date                                 msggrep                    sg_write_verify
+ db_archive                           msginit                    sg_write_x
+ db_checkpoint                        msgmerge                   sg_wr_mode
+ db_deadlock                          msgunfmt                   sg_xcopy
+ db_dump                              msguniq                    sg_zone
+ db_dump185                           mv                         sh
+ db_hotbackup                         namei                      sha1hmac
+ db_load                              ndptool                    sha1sum
+ db_log_verify                        needs-restarting           sha224hmac
+ db_printlog                          neqn                       sha224sum
+ db_recover                           newgidmap                  sha256hmac
+ db_replicate                         newgrp                     sha256sum
+ db_stat                              newuidmap                  sha384hmac
+ db_tuner                             nf-ct-add                  sha384sum
+ db_upgrade                           nf-ct-events               sha512hmac
+ dbus-binding-tool                    nf-ct-list                 sha512sum
+ dbus-cleanup-sockets                 nf-exp-add                 showconsolefont
+ dbus-daemon                          nf-exp-delete              showkey
+ dbus-monitor                         nf-exp-list                shred
+ dbus-run-session                     nf-log                     shuf
+ dbus-send                            nf-monitor                 skill
+ dbus-test-tool                       nf-queue                   slabinfo
+ dbus-update-activation-environment   ngettext                   slabtop
+ dbus-uuidgen                         nice                       sleep
+ db_verify                            nisdomainname              snice
+ dd                                   nl                         soelim
+ deallocvt                            nl-addr-add                sort
+ debuginfod-find                      nl-addr-delete             sotruss
+ debuginfo-install                    nl-addr-list               split
+ df                                   nl-class-add               sprof
+ diff                                 nl-class-delete            sscg
+ diff3                                nl-classid-lookup          ssh
+ dir                                  nl-class-list              ssh-add
+ dircolors                            nl-cls-add                 ssh-agent
+ dirmngr                              nl-cls-delete              ssh-copy-id
+ dirmngr-client                       nl-cls-list                ssh-keygen
+ dirname                              nl-fib-lookup              ssh-keyscan
+ dmesg                                nl-link-enslave            sss_ssh_authorizedkeys
+ dnf                                  nl-link-ifindex2name       sss_ssh_knownhostsproxy
+ dnf-3                                nl-link-list               stat
+ dnsdomainname                        nl-link-name2ifindex       stdbuf
+ domainname                           nl-link-release            stty
+ dracut                               nl-link-set                su
+ du                                   nl-link-stats              sudo
+ dumpkeys                             nl-list-caches             sudoedit
+ echo                                 nl-list-sockets            sudoreplay
+ egrep                                nl-monitor                 sum
+ eject                                nl-neigh-add               sync
+ env                                  nl-neigh-delete            systemctl
+ envsubst                             nl-neigh-list              systemd-analyze
+ eqn                                  nl-neightbl-list           systemd-ask-password
+ evmctl                               nl-pktloc-lookup           systemd-cat
+ ex                                   nl-qdisc-add               systemd-cgls
+ expand                               nl-qdisc-delete            systemd-cgtop
+ expr                                 nl-qdisc-list              systemd-delta
+ factor                               nl-route-add               systemd-detect-virt
+ fallocate                            nl-route-delete            systemd-escape
+ false                                nl-route-get               systemd-firstboot
+ fc                                   nl-route-list              systemd-hwdb
+ fc-cache                             nl-rule-list               systemd-inhibit
+ fc-cache-64                          nl-tctree-list             systemd-machine-id-setup
+ fc-cat                               nl-util-addr               systemd-mount
+ fc-conflist                          nmcli                      systemd-notify
+ fc-list                              nm-online                  systemd-path
+ fc-match                             nmtui                      systemd-resolve
+ fc-pattern                           nmtui-connect              systemd-run
+ fc-query                             nmtui-edit                 systemd-socket-activate
+ fc-scan                              nmtui-hostname             systemd-stdio-bridge
+ fc-validate                          nohup                      systemd-sysusers
+ fg                                   nproc                      systemd-tmpfiles
+ fgconsole                            nroff                      systemd-tty-ask-password-agent
+ fgrep                                nsenter                    systemd-umount
+ file                                 numfmt                     tabs
+ fincore                              od                         tac
+ find                                 oddjob_request             tail
+ findmnt                              open                       tar
+ find-repos-of-install                openssl                    taskset
+ fips-finish-install                  openvt                     tbl
+ fips-mode-setup                      os-prober                  teamd
+ flock                                p11-kit                    teamdctl
+ fmt                                  package-cleanup            teamnl
+ fold                                 page_owner_sort            tee
+ free                                 passwd                     test
+ g13                                  paste                      tic
+ gapplication                         pathchk                    timedatectl
+ gawk                                 pchrt                      timeout
+ gdbm_dump                            peekfd                     tload
+ gdbm_load                            pflags                     tmon
+ gdbmtool                             pgrep                      toe
+ gdbus                                pic                        top
+ gdk-pixbuf-query-loaders-64          pidof                      touch
+ gdk-pixbuf-thumbnailer               pigz                       tput
+ gencat                               pinentry                   tr
+ genl-ctrl-list                       pinentry-curses            tracepath
+ geqn                                 ping                       troff
+ getconf                              pinky                      true
+ getent                               pkaction                   truncate
+ getfacl                              pkcheck                    trust
+ getkeycodes                          pkcon                      tset
+ getopt                               pkexec                     tsort
+ getopts                              pkill                      tty
+ gettext                              pkla-admin-identities      turbostat
+ gettext.sh                           pkla-check-authorization   type
+ gio                                  pkmon                      tzselect
+ gio-querymodules-64                  pkttyagent                 udevadm
+ glib-compile-schemas                 pldd                       ul
+ gneqn                                pmap                       ulimit
+ gnroff                               post-grohtml               umask
+ gpasswd                              powernow-k8-decode         umount
+ gpg                                  pr                         unalias
+ gpg2                                 preconv                    uname
+ gpg-agent                            pre-grohtml                uname26
+ gpgconf                              printenv                   unexpand
+ gpg-connect-agent                    printf                     unicode_start
+ gpg-error                            prlimit                    unicode_stop
+ gpgme-json                           prtstat                    uniq
+ gpgparsemail                         ps                         unlink
+ gpgsm                                psfaddtable                unpigz
+ gpgsplit                             psfgettable                unshare
+ gpgv                                 psfstriptable              unversioned-python
+ gpgv2                                psfxtable                  unxz
+ gpg-wks-server                       pslog                      update-ca-trust
+ gpg-zip                              pstree                     update-crypto-policies
+ gpic                                 pstree.x11                 update-mime-database
+ gpio-event-mon                       ptaskset                   uptime
+ gpio-hammer                          ptx                        users
+ grep                                 pwd                        usleep
+ groff                                pwdx                       utmpdump
+ grops                                pwmake                     uuidgen
+ grotty                               pwscore                    uuidparse
+ groups                               pydoc3.6                   vdir
+ growpart                             pyjwt                      vi
+ grub2-editenv                        pyvenv-3.6                 view
+ grub2-file                           qemu-ga                    vlock
+ grub2-fstest                         quota                      vmstat
+ grub2-glue-efi                       quotasync                  w
+ grub2-kbdcomp                        raw                        wait
+ grub2-menulst2cfg                    read                       wall
+ grub2-mkfont                         readlink                   watch
+ grub2-mkimage                        realpath                   watchgnupg
+ grub2-mklayout                       recode-sr-latin            wc
+ grub2-mknetdir                       rename                     wdctl
+ grub2-mkpasswd-pbkdf2                renew-dummy-cert           whatis
+ grub2-mkrelpath                      renice                     whereis
+ grub2-mkrescue                       repoclosure                which
+ grub2-mkstandalone                   repodiff                   whiptail
+ grub2-script-check                   repo-graph                 who
+ grub2-syslinux2cfg                   repomanage                 whoami
+ gsettings                            repoquery                  write
+ gsoelim                              reposync                   wslinfo
+ gtar                                 repotrack                  wslpath
+ gtbl                                 rescan-scsi-bus.sh         x86_64
+ gtroff                               reset                      x86_energy_perf_policy
+ gunzip                               resizecons                 xargs
+ gzexe                                resolvectl                 xgettext
+ gzip                                 rev                        xmlcatalog
+ hash                                 rm                         xmllint
+ head                                 rmdir                      xmlwf
+ hexdump                              rngtest                    xz
+ hostid                               rpcbind                    xzcat
+ hostname                             rpcinfo                    xzcmp
+ hostnamectl                          rpm                        xzdec
+ i386                                 rpm2archive                xzdiff
+ ibdev2netdev                         rpm2cpio                   xzegrep
+ iconv                                rpmdb                      xzfgrep
+ id                                   rpmkeys                    xzgrep
+ idiag-socket-details                 rpmquery                   xzless
+ iio_event_monitor                    rpmverify                  xzmore
+ iio_generic_buffer                   rsync                      yes
+ info                                 rsyslog-recover-qi.pl      ypdomainname
+ infocmp                              runcon                     yum
+ infotocap                            run-parts                  yum-builddep
+ install                              rvi                        yum-config-manager
+ intel-speed-select                   rview                      yum-debug-dump
+ ionice                               sandbox                    yum-debug-restore
+ ipcalc                               scp                        yumdownloader
+ ipcmk                                script                     yum-groups-manager
+ ipcrm                                scriptreplay               zcat
+ ipcs                                 scsi_logging_level         zcmp
+ isosize                              scsi_mandat                zdiff
+ jobs                                 scsi_readcap               zegrep
+ join                                 scsi_ready                 zfgrep
+ journalctl                           scsi-rescan                zforce
+ jsondiff                             scsi_satl                  zgrep
+ jsondiff-3                           scsi_start                 zless
+ jsondiff-3.6                         scsi_stop                  zmore
+ jsonpatch                            scsi_temperature           znew
+ jsonpatch-3                          sdiff                      zsoelim
+ jsonpatch-3.6                        sealert</code></pre><p id="3af81e2a-4759-49df-a5a1-e52edb84b434" class="">
+</p><ol type="1" id="7946977e-e38b-46ef-8ba3-35f0ffaa62e5" class="numbered-list" start="9"><li>We can also display the value of any environment variable using the $ sign for example if we do $COLUMNS, it will display the current value of the environment variable COLUMN which is 60.</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="251d3995-9441-4e77-a439-8b44eb7e639e" class="code"><code class="language-Bash">[root@HarshDhami ~]# echo $COLUMNS
+60</code></pre><p id="40e0cb7c-0de2-42c5-bbc1-4e3fcd783600" class="">
+</p><ol type="1" id="fe1cae08-d20d-42fd-8333-23719b7cd6f1" class="numbered-list" start="10"><li>This command shows us the PATH environment variable </li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="aea61d1e-ffcd-4cc2-bbe9-f404f29859de" class="code"><code class="language-Bash">[root@HarshDhami ~]# echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/VMware/VMware Workstation/bin/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/dhami/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/dhami/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/dhami/AppData/Roaming/npm:/root/bin</code></pre><p id="70bc1fb2-0b0d-4f1a-a6a8-ec22177d374a" class="">These are the directories that will be searched when commands are executed from the command line</p><p id="d8d7d84f-f2d0-4299-9799-cbc639cd57cc" class="">
+</p><ol type="1" id="df95cc33-dd23-4cce-a0a0-3c45548191ec" class="numbered-list" start="11"><li>To test the PATH variable, we will first create a new directory scripts using the command mkdir scripts </li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e6cc63d4-0e26-48d3-917b-bf8771d5de4d" class="code"><code class="language-Bash">[root@HarshDhami ~]# mkdir scripts
+[root@HarshDhami ~]# ls
+scripts</code></pre><p id="a39a51fc-f3f8-4185-b490-866843f1d993" class="">
+</p><ol type="1" id="8491f0b6-0dbc-499a-b2e5-3b4a472e4f6e" class="numbered-list" start="12"><li>Now we have to make a script called today using the following commands:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="12b01329-be97-463c-980d-4a927af8b2db" class="code"><code class="language-Bash">[root@HarshDhami ~]# echo &#x27;#!/bin/bash&#x27; &gt; scripts/today
+day is $(date +%[root@HarshDhami ~]# echo &#x27;echo Today is $(date +%D)&#x27; &gt;&gt; scripts/today</code></pre><p id="0909d096-aa5d-4744-ab8b-7ff383069531" class="">
+</p><ol type="1" id="1fe1db81-ed5f-4a0f-a763-afacb6163ad5" class="numbered-list" start="13"><li>And now we will execute the script that we just made:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="26a6e13a-071e-4c28-b9b5-6bebc4a1dbe6" class="code"><code class="language-Bash">[root@HarshDhami ~]# bash scripts/today
+Today is 07/23/24</code></pre><p id="ea6a6691-7f16-4ee5-910c-f53e3f631404" class="">
+</p><ol type="1" id="6df2a4fd-cb7f-45c5-8b9f-5d754a692c33" class="numbered-list" start="14"><li>You cannot run the script directly without writing bash in front of it and if you want to it you need the read and execute permissions, let’s try running the script without the permission and check the output:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3fb4350a-3746-45f1-b186-ab55e90ca1ae" class="code"><code class="language-Bash">[root@HarshDhami ~]# scripts/today
+-bash: scripts/today: Permission denied</code></pre><p id="827216e7-ca8e-4fc7-8660-a2c56182b483" class="">
+</p><ol type="1" id="975b363b-aaf5-4cd0-9446-895c50049d6a" class="numbered-list" start="15"><li>We can see the permissions of the file using the detailed list command:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e3a9d7a9-6fe8-4091-bae6-e3cbe7698fe8" class="code"><code class="language-Bash">[root@HarshDhami ~]# ls -l scripts/today
+-rw-r--r-- 1 root root 38 Jul 23 17:18 scripts/today</code></pre><p id="fc46eff7-77bf-4ef5-a7fa-73600f17f62b" class="">Now, you can see that the script has -rw which means read and write permissions</p><p id="01f81b27-2974-4164-8585-cf2b7fb27fa4" class="">
+</p><ol type="1" id="afcb6468-3b14-41a1-bb11-ecd0bdc0cd81" class="numbered-list" start="16"><li>We use the CHMOD command to change the permissions of the scripts so anyone that has access to the script directory can run the script directly:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="b0e7efc6-b012-4484-9572-be9ce126d14f" class="code"><code class="language-Bash">[root@HarshDhami ~]# chmod a+x scripts/today
+[root@HarshDhami ~]# ls -l scripts/today
+-rwxr-xr-x 1 root root 38 Jul 23 17:18 scripts/today</code></pre><p id="69de7d0d-439e-433b-ab47-791086607aef" class="">Now you can see that the file has x in the output which means that the scripts are executable to the users</p><p id="b3a851b0-a764-4eb1-82da-89b760aad6ce" class="">
+</p><ol type="1" id="cf014761-6d6f-44b2-af2c-9c9b95eb269c" class="numbered-list" start="17"><li>Now as the file is an executable it can be run with any valid relative or absolute path like:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="d39e49ab-7e42-4ff5-b57f-1c8a22509270" class="code"><code class="language-Bash">[root@HarshDhami ~]# scripts/today
+Today is 07/23/24
+[root@HarshDhami ~]# cd scripts/
+[root@HarshDhami scripts]# ./today
+Today is 07/23/24
+[root@HarshDhami scripts]# /root/scripts/today
+Today is 07/23/24</code></pre><p id="f3b9e64f-3b42-444c-b867-a7e6a8081909" class="">
+</p><ol type="1" id="484ce56d-9be1-4e1b-a6de-c98a6c286ff5" class="numbered-list" start="18"><li>The script would not run directly since its directory is not included in the PATH variable and the execution of the script will fail </li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="edb93c1b-f39e-47d5-a51d-f488ebff23ea" class="code"><code class="language-Bash">[root@HarshDhami ~]# today
+-bash: today: command not found</code></pre><p id="b5b896e0-2cdb-4d43-af18-437a366158bc" class="">
+</p><ol type="1" id="5a043b29-61d9-4cb6-bb4c-1320ac8aec07" class="numbered-list" start="19"><li>Now we are going to check the value of the PATH variable before and after adding the scripts directory to it:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="038694e8-99cd-482b-9222-730ede16afa0" class="code"><code class="language-Bash">[root@HarshDhami ~]# echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/VMware/VMware Workstation/bin/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/dhami/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/dhami/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/dhami/AppData/Roaming/npm:/root/bin
+[root@HarshDhami ~]# PATH=$PATH:$HOME/scripts/
+[root@HarshDhami ~]# echo $echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/VMware/VMware Workstation/bin/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/dhami/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/dhami/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/dhami/AppData/Roaming/npm:/root/bin:/root/scripts/
+[root@HarshDhami ~]#</code></pre><p id="20872706-3c95-46b9-94c6-708a23be34f5" class="">
+</p><ol type="1" id="f93f05f9-15b1-43d0-a8d2-3e633d11c7d9" class="numbered-list" start="20"><li>Now that the PATH variable has the directory of the script, we can run the script however without caring about the location:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="43d18400-f67b-48aa-80bd-8328d3d29578" class="code"><code class="language-Bash">[root@HarshDhami ~]# today
+Today is 07/23/24</code></pre><p id="e2952204-21b0-42c1-9241-4eacacc6f483" class="">Here you can see that the today script is running even in the /root directory</p><p id="11d920a1-1163-4138-a556-c8bce9c0f8f8" class="">
+</p><ol type="1" id="90c4de12-731b-4d8f-a762-9d64c83e8fc2" class="numbered-list" start="21"><li>By design the changes made to the variables are not persistent and resets after the user logs out of the system we can just type exit to log out of the system:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e6d728c1-15d1-4ed7-85c5-446cbbc423b7" class="code"><code class="language-Bash">[root@HarshDhami ~]# exit</code></pre><p id="f145f742-c452-46a6-b44a-c211ba7f4a69" class="">
+</p><ol type="1" id="135597f7-3c54-4476-8f72-82821746bce8" class="numbered-list" start="22"><li>And now if we see the value of the PATH variable we can see that it has been reverted back to its original list of directories:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="f5cde964-6b3e-4c06-aeca-bff171ec7b2e" class="code"><code class="language-Bash">[root@HarshDhami ~]# echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/VMware/VMware Workstation/bin/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/dhami/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/dhami/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/dhami/AppData/Roaming/npm:/root/bin</code></pre><p id="c73eabd4-d4ac-4f9b-af83-dcc8211e463b" class="">
+</p><ol type="1" id="93f2f35a-4093-41ea-a64d-69631f0a16b4" class="numbered-list" start="23"><li>As non-privileged users we can use the .bash_profile file to customize the variables such as PATH:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a4ca5404-29d6-4eb8-902b-13eb6d51c0bf" class="code"><code class="language-Bash">[root@HarshDhami ~]# cat .bash_profile
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin
+
+export PATH</code></pre><p id="386ae326-f4ed-469a-b489-53916a424df4" class="">
+</p><ol type="1" id="31b27e10-c3aa-452c-a7ea-3a5fa1bd1068" class="numbered-list" start="24"><li>Using NANO to edit the .bash_profile file:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="e3cbdcd5-b9cd-41e7-a6f9-06c776aa916b" class="code"><code class="language-Bash">  GNU nano 2.9.8                                        .bash_profile                                                   
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin
+
+export PATH</code></pre><p id="da133557-cf5f-46f2-89da-e302341ebc51" class="">
+</p><ol type="1" id="61d41bbe-af7f-49a6-8e18-c4b89d445860" class="numbered-list" start="25"><li>Now we use the arrow keys to move to the PATH=$PATH:$HOME/bin and add $HOME/scripts to it:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="37d5a996-5e74-4745-8d86-39cd8dfac8b5" class="code"><code class="language-Bash">  GNU nano 2.9.8                                        .bash_profile
+
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin:$HOME/scripts
+
+export PATH</code></pre><p id="c4609819-bb0b-43ef-b8a8-58368dd13da1" class="">
+</p><ol type="1" id="960f8e98-34ae-4314-a711-fdd6fcf25817" class="numbered-list" start="26"><li>Now we close the editor using the command Ctrl + X and then y for saving the file and then click enter to exit nano</li></ol><ol type="1" id="cb4ab446-6a11-46a3-9f40-921ecc54a17d" class="numbered-list" start="27"><li>Now instead of logging out and logging in again to see the changes we can just run the .bash_profile using the . command which is knowns as the source commands</li></ol><ol type="1" id="a76d0b90-41e8-40d0-ae0a-24e0cb86588c" class="numbered-list" start="28"><li>Now we will again check the PATH variable to see if it contains scripts directory:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="c1f6f428-d186-44c8-9d6e-1c6dde9b9b3f" class="code"><code class="language-Bash">[root@HarshDhami ~]# echo $echo $PATH
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Program Files (x86)/VMware/VMware Workstation/bin/:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files/Microsoft VS Code/bin:/mnt/c/Program Files/PuTTY/:/mnt/c/Program Files/nodejs/:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Users/dhami/AppData/Local/Programs/Python/Launcher/:/mnt/c/Users/dhami/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/dhami/AppData/Roaming/npm:/root/bin:/root/scripts/</code></pre><p id="df20cdad-dd85-426e-9d2b-5c0231c5767c" class="">
+</p><ol type="1" id="a7d24324-3398-48cb-8af2-c02f83af6163" class="numbered-list" start="29"><li>The files that are in the /etc/skel directory are automatically copied to the new user’s home directory when their account is created. Now we will see these files using the command:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fc722822-a79b-419f-bd0a-f1cda9f5f21a" class="code"><code class="language-Bash">[root@HarshDhami ~]# ls -a /etc/skel
+.  ..  .bash_logout  .bash_profile  .bashrc</code></pre><p id="7863f2d0-7d05-49e2-9649-8e37fed7e494" class="">These are the files as we can see them</p><p id="05f374e7-fad3-4e56-9ecc-5c75e95ccc19" class="">
+</p><ol type="1" id="5eb8c236-9cac-4dc8-b00f-79e2c4541850" class="numbered-list" start="30"><li>We need the superuser privileges to add user accounts or copy files into the /etc/skel directory and we can get the superuser privileges using the command:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1a292c76-c2cf-40d9-a651-d20ab0fb4507" class="code"><code class="language-Bash">[root@HarshDhami ~]# su root</code></pre><p id="b7b1234f-37ce-462d-a21e-4c2e6bb3aa6f" class="">You will be prompted to enter your password </p><p id="17c7b216-9527-4e65-945a-23b1e0c42ed7" class="">
+</p><ol type="1" id="d5e27f9c-a435-4a43-98b4-b2c7fdf78581" class="numbered-list" start="31"><li>Now we are going to copy the customized .bash_profile to the /etc/skel directory:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="cbf147bc-0108-4aa6-8000-830e8b35329a" class="code"><code class="language-Bash">[root@HarshDhami ~]# cp .bash_profile /etc/skel
+cp: overwrite &#x27;/etc/skel/.bash_profile&#x27;? y</code></pre><p id="d2572907-253b-4d90-944f-d9576b0dfd94" class="">
+</p><ol type="1" id="170c5b90-6fbe-471b-baf9-9a0cad8937ef" class="numbered-list" start="32"><li>We can add a new user using the following command:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fe5aad83-4752-44c6-85e4-aec1aeea876e" class="code"><code class="language-Bash">[root@HarshDhami ~]# useradd testuser</code></pre><p id="55e3edc3-eb42-405f-8af1-fa6cc02b2fe3" class="">
+</p><ol type="1" id="07dc52d8-2e46-46e9-9734-6771213c1137" class="numbered-list" start="33"><li>Now if we check the newly generated .bash_profile file for the new user it is going to be our customized one with scripts directory in it</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="82b31278-80d0-45cd-b08f-e697c6ce36b0" class="code"><code class="language-Bash">[root@HarshDhami ~]# cat ~testuser/.bash_profile
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+fi
+
+# User specific environment and startup programs
+
+PATH=$PATH:$HOME/bin:$HOME/scripts
+
+export PATH</code></pre><p id="b55c8866-0810-472e-9882-f8144d88ed99" class="">As you can see here we have the scripts added in the end of the PATH variable </p><p id="c5173be5-e3ec-46f8-a2c7-86cdf4d80c73" class="">
+</p><ol type="1" id="2df87b4f-86fd-4f14-9ef4-8a10b5bbb1ce" class="numbered-list" start="34"><li>Now let us take a look into the .bashrc file: and the .bash_profile file is only loaded once at the user login but the .bashrc file loads upon even after we open a new terminal window so it is a good place to keep our custom functions and aliases</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0b455740-4359-4221-be90-12f2961ee802" class="code"><code class="language-Bash">[root@HarshDhami ~]# cat /etc/skel/.bashrc
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+# User specific environment
+if ! [[ &quot;$PATH&quot; =~ &quot;$HOME/.local/bin:$HOME/bin:&quot; ]]
+then
+    PATH=&quot;$HOME/.local/bin:$HOME/bin:$PATH&quot;
+fi
+export PATH
+
+# Uncomment the following line if you don&#x27;t like systemctl&#x27;s auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions</code></pre><p id="7c84d10f-dd45-43eb-811c-5589eebf4ff6" class="">
+</p><ol type="1" id="6e72be62-a62e-406a-8b16-726596aa0541" class="numbered-list" start="35"><li>Now let us test the aliases in the interactive shell before adding them into the .bashrc file </li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="786ccf7f-a126-4647-b80d-25a0ef9aa2b2" class="code"><code class="language-Bash">[root@HarshDhami ~]# alias
+alias cp=&#x27;cp -i&#x27;
+alias egrep=&#x27;egrep --color=auto&#x27;
+alias fgrep=&#x27;fgrep --color=auto&#x27;
+alias grep=&#x27;grep --color=auto&#x27;
+alias l.=&#x27;ls -d .* --color=auto&#x27;
+alias ll=&#x27;ls -l --color=auto&#x27;
+alias ls=&#x27;ls --color=auto&#x27;
+alias mv=&#x27;mv -i&#x27;
+alias rm=&#x27;rm -i&#x27;
+alias xzegrep=&#x27;xzegrep --color=auto&#x27;
+alias xzfgrep=&#x27;xzfgrep --color=auto&#x27;
+alias xzgrep=&#x27;xzgrep --color=auto&#x27;
+alias zegrep=&#x27;zegrep --color=auto&#x27;
+alias zfgrep=&#x27;zfgrep --color=auto&#x27;
+alias zgrep=&#x27;zgrep --color=auto&#x27;
+[root@HarshDhami ~]# alias lt=&#x27;ls -lrt&#x27;</code></pre><p id="72542147-f0b1-4532-9040-bb7b4ce462f1" class="">
+</p><ol type="1" id="ff524dd0-e0f3-4ec9-8f8b-3a075967f332" class="numbered-list" start="36"><li>Let us test the It/var alias and see if it works and lists the /var directory in reverse time order:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="4438f587-e6a0-4b21-8884-a4bade4cf266" class="code"><code class="language-Bash">[root@HarshDhami ~]# lt /var
+total 72
+lrwxrwxrwx  1 root root    6 Jun  3  2021 run -&gt; ../run
+lrwxrwxrwx  1 root root   11 Jun  3  2021 lock -&gt; ../run/lock
+drwxr-xr-x  2 root root 4096 Jun 22  2021 yp
+drwxr-xr-x  6 root root 4096 Jun 22  2021 spool
+drwxr-xr-x  2 root root 4096 Jun 22  2021 preserve
+drwxr-xr-x  2 root root 4096 Jun 22  2021 opt
+drwxr-xr-x  2 root root 4096 Jun 22  2021 nis
+lrwxrwxrwx  1 root root   10 Jun 22  2021 mail -&gt; spool/mail
+drwxr-xr-x  9 root root 4096 Jun 22  2021 log
+drwxr-xr-x  2 root root 4096 Jun 22  2021 local
+drwxr-xr-x  2 root root 4096 Jun 22  2021 gopher
+drwxr-xr-x  2 root root 4096 Jun 22  2021 games
+drwxr-xr-x  2 root root 4096 Jun 22  2021 ftp
+drwxr-xr-x  3 root root 4096 Jun 22  2021 empty
+drwxr-xr-x  3 root root 4096 Jun 22  2021 db
+drwxr-xr-x 12 root root 4096 Jun 22  2021 cache
+drwxr-xr-x  2 root root 4096 Jun 22  2021 adm
+drwxr-xr-x  3 root root 4096 Aug 26  2021 kerberos
+drwxr-xr-x  2 root root 4096 Dec 21  2021 crash
+drwxr-xr-x 33 root root 4096 Jul 23 17:47 lib
+drwxrwxrwt  2 root root 4096 Jul 23 17:58 tmp</code></pre><p id="9793b4c0-7d5d-49d3-bdda-e330f82dc349" class="">Yes, it is working completely fine</p><p id="d6640c5d-2fa9-4f5a-8eed-46367fc589f8" class="">
+</p><ol type="1" id="673bcd25-9144-4605-9600-b68813985d55" class="numbered-list" start="37"><li>Now let’s unalias lt and see:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="3a737998-0068-4b62-922d-1082659927c5" class="code"><code class="language-Bash">[root@HarshDhami ~]# unalias lt
+[root@HarshDhami ~]# alias
+alias cp=&#x27;cp -i&#x27;
+alias egrep=&#x27;egrep --color=auto&#x27;
+alias fgrep=&#x27;fgrep --color=auto&#x27;
+alias grep=&#x27;grep --color=auto&#x27;
+alias l.=&#x27;ls -d .* --color=auto&#x27;
+alias ll=&#x27;ls -l --color=auto&#x27;
+alias ls=&#x27;ls --color=auto&#x27;
+alias mv=&#x27;mv -i&#x27;
+alias rm=&#x27;rm -i&#x27;
+alias xzegrep=&#x27;xzegrep --color=auto&#x27;
+alias xzfgrep=&#x27;xzfgrep --color=auto&#x27;
+alias xzgrep=&#x27;xzgrep --color=auto&#x27;
+alias zegrep=&#x27;zegrep --color=auto&#x27;
+alias zfgrep=&#x27;zfgrep --color=auto&#x27;
+alias zgrep=&#x27;zgrep --color=auto&#x27;</code></pre><p id="577bfc52-ed64-405f-93e4-a10122ffed98" class="">It is removed</p><p id="c626f866-ae1a-4d88-810f-5819b0954604" class="">
+</p><ol type="1" id="3c7d9e0f-d966-42f4-bffe-9e564830a846" class="numbered-list" start="38"><li>Let us see the functions declared in the current shell:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5956ee3d-015d-4655-bd3c-857f6423d340" class="code"><code class="language-Bash">[root@HarshDhami ~]# declare -f
+gawklibpath_append ()
+{
+    [ -z &quot;$AWKLIBPATH&quot; ] &amp;&amp; AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`;
+    export AWKLIBPATH=&quot;$AWKLIBPATH:$*&quot;
+}
+gawklibpath_default ()
+{
+    unset AWKLIBPATH;
+    export AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`
+}
+gawklibpath_prepend ()
+{
+    [ -z &quot;$AWKLIBPATH&quot; ] &amp;&amp; AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`;
+    export AWKLIBPATH=&quot;$*:$AWKLIBPATH&quot;
+}
+gawkpath_append ()
+{
+    [ -z &quot;$AWKPATH&quot; ] &amp;&amp; AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`;
+    export AWKPATH=&quot;$AWKPATH:$*&quot;
+}
+gawkpath_default ()
+{
+    unset AWKPATH;
+    export AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`
+}
+gawkpath_prepend ()
+{
+    [ -z &quot;$AWKPATH&quot; ] &amp;&amp; AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`;
+    export AWKPATH=&quot;$*:$AWKPATH&quot;
+}
+which ()
+{
+    ( alias;
+    eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot &quot;$@&quot;
+}
+declare -fx which</code></pre><p id="f5cf4323-2d5e-4b06-b5fa-263b528b2b13" class="">
+</p><ol type="1" id="2a73cd5c-e67c-4657-ae02-e7dc9f46e83b" class="numbered-list" start="39"><li>Setting up a function:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="563e3ace-53f7-445e-9d1f-ba44fb90a039" class="code"><code class="language-Bash">[root@HarshDhami ~]# lS() { ls -lrS $@; }
+[root@HarshDhami ~]# declare -f
+gawklibpath_append ()
+{
+    [ -z &quot;$AWKLIBPATH&quot; ] &amp;&amp; AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`;
+    export AWKLIBPATH=&quot;$AWKLIBPATH:$*&quot;
+}
+gawklibpath_default ()
+{
+    unset AWKLIBPATH;
+    export AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`
+}
+gawklibpath_prepend ()
+{
+    [ -z &quot;$AWKLIBPATH&quot; ] &amp;&amp; AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`;
+    export AWKLIBPATH=&quot;$*:$AWKLIBPATH&quot;
+}
+gawkpath_append ()
+{
+    [ -z &quot;$AWKPATH&quot; ] &amp;&amp; AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`;
+    export AWKPATH=&quot;$AWKPATH:$*&quot;
+}
+gawkpath_default ()
+{
+    unset AWKPATH;
+    export AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`
+}
+gawkpath_prepend ()
+{
+    [ -z &quot;$AWKPATH&quot; ] &amp;&amp; AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`;
+    export AWKPATH=&quot;$*:$AWKPATH&quot;
+}
+lS ()
+{
+    ls --color=auto -lrS $@
+}
+which ()
+{
+    ( alias;
+    eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot &quot;$@&quot;
+}
+declare -fx which</code></pre><p id="394af2f8-d9d0-46f8-8055-afc3edc43e9d" class="">
+</p><ol type="1" id="e39579be-5de4-44af-bde6-65c48f73ed27" class="numbered-list" start="40"><li>Let’s check if the new function works correctly:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7ee3c473-2df7-47be-b514-6062a369aff9" class="code"><code class="language-Bash">[root@HarshDhami ~]# ls /var
+adm  cache  crash  db  empty  ftp  games  gopher  kerberos  lib  local  lock  log  mail  nis  opt  preserve  run  spool  tmp  yp</code></pre><p id="c51de99f-a55d-4546-bca2-ca1d507980a8" class="">Yes, it does</p><p id="e6ec1a5a-f137-4f05-97a1-0740567850bd" class="">
+</p><ol type="1" id="4e14f802-cc45-4db8-b404-1fd33e44c871" class="numbered-list" start="41"><li>The unset command can be used to remove a function’s definiton:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="1183bb6e-c78f-46d7-9cdc-e27930a46b59" class="code"><code class="language-Bash">[root@HarshDhami ~]# unset lS
+[root@HarshDhami ~]# declare -f
+gawklibpath_append ()
+{
+    [ -z &quot;$AWKLIBPATH&quot; ] &amp;&amp; AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`;
+    export AWKLIBPATH=&quot;$AWKLIBPATH:$*&quot;
+}
+gawklibpath_default ()
+{
+    unset AWKLIBPATH;
+    export AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`
+}
+gawklibpath_prepend ()
+{
+    [ -z &quot;$AWKLIBPATH&quot; ] &amp;&amp; AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`;
+    export AWKLIBPATH=&quot;$*:$AWKLIBPATH&quot;
+}
+gawkpath_append ()
+{
+    [ -z &quot;$AWKPATH&quot; ] &amp;&amp; AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`;
+    export AWKPATH=&quot;$AWKPATH:$*&quot;
+}
+gawkpath_default ()
+{
+    unset AWKPATH;
+    export AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`
+}
+gawkpath_prepend ()
+{
+    [ -z &quot;$AWKPATH&quot; ] &amp;&amp; AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`;
+    export AWKPATH=&quot;$*:$AWKPATH&quot;
+}
+which ()
+{
+    ( alias;
+    eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot &quot;$@&quot;
+}
+declare -fx which</code></pre><p id="5adffba6-32b2-448a-9c3c-dfd726ccb58b" class="">
+</p><ol type="1" id="e2566128-0f58-471c-b285-c25a4bbbd1d2" class="numbered-list" start="42"><li>Adding the functions to the .bashrc file</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="5503ebb4-4961-4d27-bcdf-737abc484155" class="code"><code class="language-Bash">  GNU nano 2.9.8                                                          /etc/skel/.bashrc
+
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+        . /etc/bashrc
+fi
+
+# User specific environment
+if ! [[ &quot;$PATH&quot; =~ &quot;$HOME/.local/bin:$HOME/bin:&quot; ]]
+then
+    PATH=&quot;$HOME/.local/bin:$HOME/bin:$PATH&quot;
+fi
+export PATH
+
+# Uncomment the following line if you don&#x27;t like systemctl&#x27;s auto-paging feature:
+# export SYSTEMD_PAGER=
+
+
+# User specific aliases and functions
+alias lt=&#x27;ls -lrt&#x27;
+lS() { ls -lrS $@; }
+</code></pre><p id="8c4fed4f-ca47-4edd-8a0e-dd367127a38a" class="">
+</p><ol type="1" id="086de80b-5522-41e9-9757-dbb7cbbd9dfd" class="numbered-list" start="43"><li>Running the .bashrc file using the source command and then running alias and declare -f command to verify the aliases and the functions:</li></ol><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="40259f83-0067-475f-a829-1947cb014852" class="code"><code class="language-Bash">[root@HarshDhami ~]# . .bashrc
+[root@HarshDhami ~]# alias
+alias cp=&#x27;cp -i&#x27;
+alias egrep=&#x27;egrep --color=auto&#x27;
+alias fgrep=&#x27;fgrep --color=auto&#x27;
+alias grep=&#x27;grep --color=auto&#x27;
+alias l.=&#x27;ls -d .* --color=auto&#x27;
+alias ll=&#x27;ls -l --color=auto&#x27;
+alias ls=&#x27;ls --color=auto&#x27;
+alias mv=&#x27;mv -i&#x27;
+alias rm=&#x27;rm -i&#x27;
+alias xzegrep=&#x27;xzegrep --color=auto&#x27;
+alias xzfgrep=&#x27;xzfgrep --color=auto&#x27;
+alias xzgrep=&#x27;xzgrep --color=auto&#x27;
+alias zegrep=&#x27;zegrep --color=auto&#x27;
+alias zfgrep=&#x27;zfgrep --color=auto&#x27;
+alias zgrep=&#x27;zgrep --color=auto&#x27;
+[root@HarshDhami ~]# declare f
+[root@HarshDhami ~]# declare -f
+gawklibpath_append ()
+{
+    [ -z &quot;$AWKLIBPATH&quot; ] &amp;&amp; AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`;
+    export AWKLIBPATH=&quot;$AWKLIBPATH:$*&quot;
+}
+gawklibpath_default ()
+{
+    unset AWKLIBPATH;
+    export AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`
+}
+gawklibpath_prepend ()
+{
+    [ -z &quot;$AWKLIBPATH&quot; ] &amp;&amp; AWKLIBPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKLIBPATH&quot;]}&#x27;`;
+    export AWKLIBPATH=&quot;$*:$AWKLIBPATH&quot;
+}
+gawkpath_append ()
+{
+    [ -z &quot;$AWKPATH&quot; ] &amp;&amp; AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`;
+    export AWKPATH=&quot;$AWKPATH:$*&quot;
+}
+gawkpath_default ()
+{
+    unset AWKPATH;
+    export AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`
+}
+gawkpath_prepend ()
+{
+    [ -z &quot;$AWKPATH&quot; ] &amp;&amp; AWKPATH=`gawk &#x27;BEGIN {print ENVIRON[&quot;AWKPATH&quot;]}&#x27;`;
+    export AWKPATH=&quot;$*:$AWKPATH&quot;
+}
+which ()
+{
+    ( alias;
+    eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot &quot;$@&quot;
+}
+declare -fx which</code></pre></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
