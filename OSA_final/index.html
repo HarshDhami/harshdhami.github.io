@@ -1,0 +1,782 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>OSA(Final Project)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="056cc448-695c-4028-9498-c7cb690984ca" class="page sans"><header><h1 class="page-title">OSA(Final Project)</h1><p class="page-description"></p></header><div class="page-body"><h2 id="14210924-04de-4c35-8aa1-b26d51285c86" class="">1. Go to <a href="https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/28/Workstation/x86_64/iso/">https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/28/Workstation/x86_64/iso/</a></h2><figure id="16936981-40d7-4e04-997c-1a66dd62e9c1" class="image"><a href="OSA(Final%20Project)%20056cc448695c40289498c7cb690984ca/2b16171c-24aa-45af-84f7-f165b5eb7461.png"><img style="width:634.9206349206349px" src="OSA(Final%20Project)%20056cc448695c40289498c7cb690984ca/2b16171c-24aa-45af-84f7-f165b5eb7461.png"/></a></figure><p id="4bdb2e6f-05a1-4851-853d-2f3699cad6aa" class="">Download the fedora workstation iso file</p><h2 id="acfdadbf-3645-480d-833f-e1d7cc17f6ad" class="">2. Open your preferred virtualization software(I am using VMware workstation PRO)</h2><figure id="bd77ea41-5c7c-44c7-a341-aa4dad6e5790"><div class="source"><a href="OSA(Final%20Project)%20056cc448695c40289498c7cb690984ca/Recording_2024-08-01_011910.mp4">https://prod-files-secure.s3.us-west-2.amazonaws.com/555fca8f-8a93-4b09-ae3b-f2175e8c1862/1c4db577-c90a-4b1d-83b3-bc470d8668df/Recording_2024-08-01_011910.mp4</a></div></figure><p id="dc0576c0-9629-486f-9ae8-0f9592668a2a" class="">Follow the steps in the video and create a virtual machine:</p><p id="8f2297dc-7912-40db-b283-61882fa2389d" class="">Create a new virtual machine with the following configurations:</p><ul id="ea817af5-1cc9-4421-8481-3f04a93487b8" class="bulleted-list"><li style="list-style-type:disc"><strong>Name:</strong> Centos Linux</li></ul><ul id="acc62b14-94c4-4dac-a0f8-df712d04d39c" class="bulleted-list"><li style="list-style-type:disc"><strong>Type:</strong> Linux</li></ul><ul id="aa0c2dd1-14a1-45c6-8f17-82cba29498c4" class="bulleted-list"><li style="list-style-type:disc"><strong>Version:</strong> CentOS 7/8 (64-bit)</li></ul><ul id="b568a2f8-b863-4333-ae13-6f13cfde1d64" class="bulleted-list"><li style="list-style-type:disc"><strong>Memory:</strong> 4096 MB (4 GB)</li></ul><ul id="e66c49a7-d062-4ca0-a035-e12016ba6487" class="bulleted-list"><li style="list-style-type:disc"><strong>Hard Disk:</strong> Create a virtual hard disk now, 50GB, dynamically allocated.</li></ul><ul id="c0c2cc79-1809-4b78-8616-10818f8a01b9" class="bulleted-list"><li style="list-style-type:disc">We also attached the fedora 28 ISO image to the empty DVD drive.</li></ul><p id="661c5d80-64fd-47df-877a-b657b5f21cbf" class="">
+</p><h2 id="4b53ab0d-2b09-4772-8f9c-a6a45c5608c8" class="">3. After that install CentOS Stream 9 by following these steps:</h2><figure id="1b8ff5d4-a71f-4861-bfbd-18c27edb032e"><div class="source"><a href="OSA(Final%20Project)%20056cc448695c40289498c7cb690984ca/lol_(1).mp4">https://prod-files-secure.s3.us-west-2.amazonaws.com/555fca8f-8a93-4b09-ae3b-f2175e8c1862/817d427e-44e6-4cd2-8746-69eae40bf121/lol_(1).mp4</a></div></figure><ol type="1" id="79daf891-01ef-4638-80a7-85b71d8366a7" class="numbered-list" start="1"><li>Start the virtual machine.</li></ol><ol type="1" id="a5e52dee-ab65-472c-b9ec-944e92147fc0" class="numbered-list" start="2"><li>The virtual machine will boot from the Fedora 28 ISO.</li></ol><ol type="1" id="27ced58b-d281-4c43-b041-802d7bdecaba" class="numbered-list" start="3"><li>Select &quot;Install CentOS 9 Stream&quot; and follow the on-screen instructions.</li></ol><ol type="1" id="a61ed26b-1d2b-4935-a6e9-0ef07063380e" class="numbered-list" start="4"><li>Use <strong>Automatic partitioning</strong> for storage configuration.</li></ol><ol type="1" id="00faf4e8-5723-4c27-a622-116bc8d977c2" class="numbered-list" start="5"><li>Set <strong>User and root password</strong> to <code>123456</code>.</li></ol><ol type="1" id="0163346d-0555-48ab-9bb6-6026ca7352cf" class="numbered-list" start="6"><li>Complete the installation and update CentOS 9 Stream Linux.</li></ol><h2 id="4833d344-1cfb-4ed5-8ce3-e3c9f2554da5" class="">4. Now we are going to update our CentOS 9 to the latest version:</h2><ul id="b60e6feb-d0a6-4c1a-8d21-e11b98b456e3" class="bulleted-list"><li style="list-style-type:disc">After the installation, boot into CentOS 9 Stream.</li></ul><ul id="20e83d75-267e-4add-a162-fd58e1da64a5" class="bulleted-list"><li style="list-style-type:disc">Open the terminal.</li></ul><ul id="f797966d-57d4-41ee-b1f3-56a424a292db" class="bulleted-list"><li style="list-style-type:disc">Run the following commands to update the system:<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2b395559-57eb-48aa-93d2-29f1ca2c5af4" class="code"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">[harshdhami@localhost ~]$ sudo dnf update -y </code></pre></li></ul><figure id="0ede5a74-bbc6-4819-9287-3a73686632e6" class="image"><a href="OSA(Final%20Project)%20056cc448695c40289498c7cb690984ca/Untitled.png"><img style="width:707.9874877929688px" src="OSA(Final%20Project)%20056cc448695c40289498c7cb690984ca/Untitled.png"/></a></figure><h2 id="dc7635de-2584-4498-a138-a15088d24251" class="">5. Now we are going to add a second hard drive to the virtual machine:</h2><ul id="99da5248-cdc7-4353-a68d-099e6074e3c9" class="bulleted-list"><li style="list-style-type:disc">Power off the virtual machine.</li></ul><ul id="30f7a532-7354-4f3e-8285-a125828a5c99" class="bulleted-list"><li style="list-style-type:disc">Go to the settings of the virtual machine.</li></ul><ul id="76c9f4f4-b90c-45df-8d33-1c732cff2055" class="bulleted-list"><li style="list-style-type:disc">Navigate to the <strong>Storage</strong> section and add a new virtual hard disk of 10GB.</li></ul><figure id="0bd82c30-7c02-4ae7-84af-5c16401b2b62"><div class="source"><a href="OSA(Final%20Project)%20056cc448695c40289498c7cb690984ca/Untitled.mp4">https://prod-files-secure.s3.us-west-2.amazonaws.com/555fca8f-8a93-4b09-ae3b-f2175e8c1862/8866b747-c419-44db-a085-a8fabcf384e8/Untitled.mp4</a></div></figure><h2 id="b9e7f637-afd3-479b-b89c-851d6ebb9d12" class="">6. Now we are going to partition the new drive:</h2><ul id="cb2ccdbf-68d1-4e7c-8013-5e750ad6a69f" class="bulleted-list"><li style="list-style-type:disc">We are going to use the sudo fdisk -l command to list all the drives and then we will select our newly added harddrive:</li></ul><figure id="4bc413d9-c7af-4991-a5ad-14a972d03f0b" class="image"><a href="OSA(Final%20Project)%20056cc448695c40289498c7cb690984ca/Untitled%201.png"><img style="width:707.9750366210938px" src="OSA(Final%20Project)%20056cc448695c40289498c7cb690984ca/Untitled%201.png"/></a></figure><p id="30c3649e-11b7-404f-9adb-51661294526c" class="">From the output we can see that /dev/nvme0n2 is the newly added harddrive now we can work on it</p><ul id="e68ce7ee-6656-4e16-b817-ba175637b1b2" class="bulleted-list"><li style="list-style-type:disc">We are going to use parted command for doing the partitions:</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="15bc9636-ce23-483b-97cf-c9b30653f443" class="code"><code class="language-Bash">[harshdhami@localhost ~]$ sudo parted /dev/nvme0n2 mklabel gpt
+[sudo] password for harshdhami: 
+Information: You may need to update /etc/fstab.</code></pre><p id="cf2b3aa8-7873-45b7-b069-97101ea92a25" class="">This command will create a gpt partition table for our drive we can also use the older mbr table using msdos</p><ul id="26218cbe-7e16-4c3c-b8b4-fde579268994" class="bulleted-list"><li style="list-style-type:disc">Doing the partitions</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6a1aa186-4d65-4859-ad32-4d5b5ea09fc8" class="code"><code class="language-Bash">[harshdhami@localhost ~]$ sudo parted /dev/nvme0n2 mkpart primary ext4 0% 2GB
+Information: You may need to update /etc/fstab.
+
+[harshdhami@localhost ~]$ sudo parted /dev/nvme0n2 mkpart extended 2GB 10GB
+Information: You may need to update /etc/fstab.
+
+[harshdhami@localhost ~]$ sudo parted /dev/nvme0n2 mkpart logical ext2 2GB 3GB
+Warning: You requested a partition from 2000MB to 3000MB (sectors 3906250..5859375).
+The closest location we can manage is 10.0GB to 10.0GB (sectors 19531776..19531776).
+Is this still acceptable to you?
+Yes/No? Yes
+Information: You may need to update /etc/fstab.
+
+[harshdhami@localhost ~]$ sudo parted /dev/nvme0n2 mkpart logical ext4 3GB 4GB
+Warning: You requested a partition from 3000MB to 4000MB (sectors 5859375..7812500).
+The closest location we can manage is 10.0GB to 10.0GB (sectors 19531777..19531777).
+Is this still acceptable to you?
+Yes/No? Yes </code></pre><h2 id="02c01c10-458b-4c83-8e34-cb7c95dfe543" class=""><strong>7. Create an ext4 Filesystem on /dev/nvme0n2p1:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6427610b-b145-4f36-aa0a-9407e64b601f" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo mkfs.ext4 /dev/nvme0n2p1
+mke2fs 1.43.8 (1-Jan-2018)
+Creating filesystem with 1953280 4k blocks and 488640 inodes
+Filesystem UUID: [UUID]
+Superblock backups stored on blocks:
+	[blocks]
+Allocating group tables: done
+Writing inode tables: done
+Writing superblocks and filesystem accounting information: done
+</code></pre><h2 id="97bba78c-782e-4865-9dc3-aa524e67b12a" class=""><strong>8. Mount /dev/nvme0n2p1 to /partition1:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="73101a52-4f8e-4388-adb9-b5f35001477b" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo mkdir /partition1
+harshdhami@localhost ~]$ sudo mount /dev/nvme0n2p1 /partition1
+</code></pre><h2 id="1991ab8d-ee50-4cda-8675-fa0969a543c5" class=""><strong>9. Create an ext2 Filesystem on /dev/nvme0n2p3:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ca0259b8-7d5e-422f-bd4d-0d6b6578c139" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo mkfs.ext2 /dev/nvme0n2p3
+mke2fs 1.43.8 (1-Jan-2018)
+Creating filesystem with 1953280 4k blocks and 488640 inodes
+Filesystem UUID: [UUID]
+Superblock backups stored on blocks:
+	[blocks]
+Allocating group tables: done
+Writing inode tables: done
+Writing superblocks and filesystem accounting information: done
+</code></pre><h2 id="49f9ac19-4f49-4ca4-9a99-225cc350351f" class=""><strong>10. Allow the system to Mount /dev/nvme0n2p3 Automatically at Boot:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0625b815-8617-44f1-8faf-c793e1c1221d" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo blkid /dev/nvme0n2p3
+/dev/nvme0n2p3: UUID=&quot;[4cdfa328-1f6b-4d41-ba67-99cb99394b1e]&quot; TYPE=&quot;ext2&quot;</code></pre><p id="ce524960-976e-4c4d-9f3d-82e3764fe45e" class="">Add the entry to <code>/etc/fstab</code>:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="198f8e93-47ab-4cc0-b74a-ede7ded5900f" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">UUID=[4cdfa328-1f6b-4d41-ba67-99cb99394b1e] /dev/nvme0n2p3 ext2 defaults 0 2
+</code></pre><h2 id="d14a7825-2da6-43aa-8a9a-cc0d9ed46777" class=""><strong>11. Prepare and Activate /dev/nvme0n2p4 as Virtual Memory:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="fd5139f3-333d-4daa-a4c7-869e2a7615b5" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo mkswap /dev/nvme0n2p4
+mkswap: /dev/nvme0n2p4: warning: don&#x27;t erase disk
+Setting up swapspace version 1, size = 1 GiB
+no label, UUID=[6497c71e-e752-4157-b397-21277da1e597]
+
+harshdhami@localhost ~]$ sudo swapon /dev/nvme0n2p4
+</code></pre><h2 id="f267bbba-1ac0-4871-9638-c789ba431b36" class=""><strong>12. Create Logical Volumes:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="166ca87f-a7c4-4e26-8257-5b8f35668dc3" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all"># Initialize the physical volume
+harshdhami@localhost ~]$ sudo pvcreate /dev/nvme0n2p5
+
+# Create the volume group
+harshdhami@localhost ~]$ sudo vgcreate VG1 /dev/nvme0n2p5
+
+# Create logical volumes
+harshdhami@localhost ~]$ sudo lvcreate -L 1G -n data1 VG1
+harshdhami@localhost ~]$ sudo lvcreate -L 2G -n data2 VG1</code></pre><h2 id="18352964-34e4-458e-8be2-747f04c2ec04" class=""><strong>13. Create an ext4 Filesystem on data1 LV:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="14ba1225-b2c3-4f06-84b8-c623593786c0" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo mkfs.ext4 /dev/VG1/data1</code></pre><h2 id="c62ccbab-1ad4-4c8e-8d44-3605b7db5ade" class=""><strong>14. Create an ext4 Filesystem on data2 LV:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="711e1ce3-22a3-45f5-bdca-6c2121d51ff6" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo mkfs.ext4 /dev/VG1/data2</code></pre><h2 id="07d7779d-8262-4847-9b86-d370c4c0d1f1" class=""><strong>15. Create Users:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="2bc49e60-e957-40c0-ab21-733f92bb68dc" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo useradd wjones
+harshdhami@localhost ~]$ sudo useradd wjenkins
+harshdhami@localhost ~]$ sudo useradd bsmith
+harshdhami@localhost ~]$ sudo useradd tbanks</code></pre><h2 id="98f44058-da79-41cb-beee-3661187a339b" class=""><strong>16. Create a Group:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="7e267532-1f07-4b0e-be0c-dc45b22eab65" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo groupadd managers</code></pre><h2 id="c44c7b82-bcd8-499f-ad15-fbe9f7c38b06" class=""><strong>17. Modify bsmith User:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="018174a5-6e3d-4693-9468-a457dc52abcc" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo usermod -u 733 -c &quot;accounting manager&quot; -p $(openssl passwd -1 Gxj234) bsmith</code></pre><h2 id="aaae9bff-34fe-4a84-918a-da919d592d30" class=""><strong>18. Change User Properties:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="ee52b6d7-2b3c-4c0e-9a99-88f7c6e20957" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo usermod -c &quot;shipping&quot; -e 2032-03-23 wjones</code></pre><h2 id="2d377af1-16ab-491d-bc73-5fe79ca07f11" class=""><strong>19. Lock the wjenkins Account:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="0827eb91-6ade-4d5d-a2f0-d6220cc6d171" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo usermod -L wjenkins</code></pre><h2 id="96617a54-6a1e-4153-adb6-0fe6b14fd75d" class=""><strong>20. Change Password for bsmith:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="bb55a44d-0903-4341-855e-3d18d0d31839" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo passwd bsmith
+# Enter new password: We34Rt</code></pre><h2 id="29271728-53f4-4b7c-96d5-f573f0ed3210" class=""><strong>21. Modify tbanks User:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="a2ebe7af-0ca8-4030-805f-70238737c53e" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all">harshdhami@localhost ~]$ sudo usermod -aG managers tbanks
+harshdhami@localhost ~]$ sudo usermod -l artbanks tbanks
+</code></pre><h2 id="64d635e2-4b26-48f9-b26f-fd3389eddd15" class=""><strong>22. Compression Commands:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="495e6e1f-dd89-4c91-b8a7-95f212f13a23" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all"># a. Compress a symbolic link
+harshdhami@localhost ~]$ compress /root/sfile
+harshdhami@localhost ~]$ compress -v /root/sfile
+
+# b. Compress directory with gzip
+harshdhami@localhost ~]$ gzip -r /root/dir1
+harshdhami@localhost ~]$ gzip -v /root/dir1
+
+# c. View contents of a zip file
+harshdhami@localhost ~]$ unzip -l /root/letter.zip
+
+# d. Compress a file with xz
+harshdhami@localhost ~]$ xz -z /root/letter
+harshdhami@localhost ~]$ xz -v /root/letter
+
+# e. Find compression ratio of gzip file
+harshdhami@localhost ~]$ gzip -l /root/letter.gz
+
+# f. Test compression with bzip2
+harshdhami@localhost ~]$ bzip2 -t /root/sample
+
+# g. Compress with minimal memory usage
+harshdhami@localhost ~]$ bzip2 --fast /root/sample
+</code></pre><h2 id="e491b9b0-6cc9-4a7c-9afd-6909b53fb513" class=""><strong>23. Backup Commands:</strong></h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="6603e1f2-5524-46bc-91aa-74292fbb5b16" class="code"><code class="language-Shell" style="white-space:pre-wrap;word-break:break-all"># 23. Backup /etc directory with tar
+harshdhami@localhost ~]$ sudo tar cvf /root/etc.tar /etc
+
+# 24. Append file to archive
+harshdhami@localhost ~]$ sudo tar rvf /root/etc.tar /root/anaconda-ks.cfg
+
+# 25. Create tarball of /home
+harshdhami@localhost ~]$ sudo tar czvf /root/stuff.tar.gz /home
+
+# 26. Backup with cpio
+harshdhami@localhost ~]$ sudo find /etc | cpio -ov &gt; /root/etc.cpio
+
+# 27. Copy /etc to /dev/nvme0n2p1
+harshdhami@localhost ~]$ sudo cp -a /etc /partition1
+
+# 28. Full filesystem backup with dump
+harshdhami@localhost ~]$ sudo dump -0uf /root/sdb1.dump /dev/nvme0n2p1
+harshdhami@localhost ~]$ sudo dumpdate &gt; /etc/dumpdates
+
+# 29. Create image of /dev/nvme0n2p4
+harshdhami@localhost ~]$ sudo dd if=/dev/nv</code></pre></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
